@@ -3,6 +3,7 @@ package com.ean.gundam.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ean.gundam.commons.Result;
 import com.ean.gundam.constants.CommonConstant;
@@ -140,6 +141,22 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
     public Result logout(String token) {
         redisTemplate.delete(token);
         return Result.success("登出成功");
+    }
+
+    @Override
+    public Result<Map<String, Object>> getUserList(String username, String phone, Long pageNo, Long pageSize) {
+        // 校验数据
+        LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper();
+        queryWrapper.eq(org.springframework.util.StringUtils.hasLength(username),User::getUsername, username);
+        queryWrapper.eq(org.springframework.util.StringUtils.hasLength(phone),User::getPhone, phone);
+        // 构造分页
+        Page page = new Page(pageNo,pageSize);
+        this.page(page,queryWrapper);
+        // 返回结果
+        Map<String,Object> data = new HashMap<>();
+        data.put("total",page.getTotal());
+        data.put("rows",page.getRecords());
+        return Result.success(data);
     }
 
     public User getSafetyUser(User user) {

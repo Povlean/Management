@@ -1,5 +1,8 @@
 package com.ean.gundam.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ean.gundam.commons.Result;
 import com.ean.gundam.constants.ResCode;
 import com.ean.gundam.model.domain.User;
@@ -9,9 +12,11 @@ import com.ean.gundam.service.UserService;
 import com.xiaoleilu.hutool.util.ObjectUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -65,8 +70,11 @@ public class UserController {
     * @return:
     */
     @GetMapping("/list")
-    public Result getAllUser() {
-        return userService.getAllUser();
+    public Result<Map<String,Object>> getUserList(@RequestParam(value = "username",required = false) String username,
+                              @RequestParam(value = "phone",required = false) String phone,
+                              @RequestParam("pageNo") Long pageNo,
+                              @RequestParam("pageSize") Long pageSize) {
+        return userService.getUserList(username,phone,pageNo,pageSize);
     }
 
 }

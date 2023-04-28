@@ -5,23 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="474491ec-27b6-4fac-baf5-9bc280978433" name="变更" comment="登录注册接口">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_fastjson_1_2_76.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ean/gundam/config/MyCrosConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/31c15e34-9e89-4c24-b0c6-ae48f0f0c965.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/31c15e34-9e89-4c24-b0c6-ae48f0f0c965.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ean/gundam/config/MybatisPlusConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/management.iml" beforeDir="false" afterPath="$PROJECT_DIR$/management.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ean/gundam/constants/ResCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ean/gundam/constants/ResCode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ean/gundam/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ean/gundam/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ean/gundam/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ean/gundam/mapper/UserMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ean/gundam/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ean/gundam/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ean/gundam/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ean/gundam/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/ean/gundam/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ean/gundam/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ean/gundam/mapper/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ean/gundam/mapper/UserMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/ean/gundam/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ean/gundam/service/UserService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/ean/gundam/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ean/gundam/service/impl/UserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../management-frontend/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../management-frontend/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../management-frontend/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../management-frontend/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../management-frontend/src/utils/request.js" beforeDir="false" afterPath="$PROJECT_DIR$/../management-frontend/src/utils/request.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../management-frontend/src/views/sys/user.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../management-frontend/src/views/sys/user.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +140,7 @@
       <workItem from="1682131985425" duration="11113000" />
       <workItem from="1682169043813" duration="2026000" />
       <workItem from="1682584159807" duration="7257000" />
-      <workItem from="1682647365571" duration="8425000" />
+      <workItem from="1682647365571" duration="13340000" />
     </task>
     <task id="LOCAL-00001" summary="登录注册接口">
       <created>1682171071868</created>

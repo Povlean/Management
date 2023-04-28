@@ -19,6 +19,8 @@ import java.util.List;
 public interface UserMapper extends BaseMapper<User> {
     User userLogin(@Param("username") String username,@Param("password") String password);
 
+    List<String> getRolesByUserId(@Param("userId") Integer userId);
+
     List<User> getAllUser();
 }
 

@@ -27,5 +27,13 @@
     <select id="getAllUser" resultType="com.ean.gundam.model.domain.User">
         select username,password,email,phone,status,avatar from tb_user
     </select>
+    <select id="getRolesByUserId" parameterType="Integer" resultType="String">
+        SELECT
+            b.role_name
+        FROM tb_user_role a,tb_role b
+        WHERE a.`user_id` = #{userId}
+          AND a.`role_id` = b.`role_id`
+    </select>
+
 
 </mapper>

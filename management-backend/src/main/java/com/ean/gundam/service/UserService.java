@@ -20,7 +20,9 @@ public interface UserService extends IService<User> {
 
     Result userRegister(RegisterRequest registerReq);
 
-    Result logout(HttpServletRequest httpServletRequest);
-
     Result getAllUser();
+
+    Result<Map<String, Object>> getUserInfo(String token);
+
+    Result logout(String token);
 }

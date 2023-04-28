@@ -1,5 +1,6 @@
 package com.ean.gundam.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -11,6 +12,7 @@ import com.ean.gundam.model.domain.User;
 import com.ean.gundam.model.request.LoginRequest;
 import com.ean.gundam.model.request.RegisterRequest;
 import com.ean.gundam.service.UserService;
+import com.xiaoleilu.hutool.util.ObjectUtil;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
@@ -61,6 +63,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         return Result.success(data,"登录成功");
     }
 
+
+
     @Override
     public Result userRegister(RegisterRequest registerReq) {
         String username = registerReq.getUsername();
@@ -97,12 +101,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         return new Result(ResCode.SUCCESS,"注册成功",user);
     }
 
-    @Override
-    public Result logout(HttpServletRequest httpServletRequest) {
-        HttpSession session = httpServletRequest.getSession();
-        session.removeAttribute(CommonConstant.USER_LOGIN_STATE);
-        return new Result(ResCode.SUCCESS,"登出成功");
-    }
 
     @Override
     public Result getAllUser() {
@@ -112,6 +110,36 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
             return user;
         }).collect(Collectors.toList());
         return new Result(ResCode.SUCCESS,"查询成功",users);
+    }
+
+    @Override
+    public Result<Map<String, Object>> getUserInfo(String token) {
+        // 从redis中取出该数据
+        Object obj = redisTemplate.opsForValue().get(token);
+        if (ObjectUtil.isNull(obj)) {
+            return Result.error(ResCode.ERROR,"该用户不存在");
+        }
+        // 将该数据转换为User对象
+        // 先将obj转换为json字符串，然后json字符串转换为
+        User user = JSON.parseObject(JSON.toJSONString(obj), User.class);
+        if (user == null) {
+            return Result.error(ResCode.ERROR,"该用户不存在");
+        }
+        // 返回类
+        Map<String,Object> data = new HashMap<>();
+        // name和avatar是从redis中获取的
+        data.put("name",user.getUsername());
+        data.put("avatar",user.getAvatar());
+        // roles是从数据库中查表查出来的
+        List<String> roles = this.getBaseMapper().getRolesByUserId(user.getId());
+        data.put("roles",roles);
+        return Result.success(data);
+    }
+
+    @Override
+    public Result logout(String token) {
+        redisTemplate.delete(token);
+        return Result.success("登出成功");
     }
 
     public User getSafetyUser(User user) {

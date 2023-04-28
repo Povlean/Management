@@ -36,6 +36,11 @@ public class UserController {
         return userService.userLogin(loginRequest,httpServletRequest);
     }
 
+    @GetMapping("/info")
+    public Result<Map<String,Object>> getUserInfo(@RequestParam("token") String token) {
+        return userService.getUserInfo(token);
+    }
+
     @PostMapping("/register")
     public Result userRegister(@RequestBody RegisterRequest registerReq) {
         if (ObjectUtil.isNull(registerReq)) {
@@ -45,11 +50,11 @@ public class UserController {
     }
 
     @PostMapping("/logout")
-    public Result userLogout (HttpServletRequest httpServletRequest) {
-        if (httpServletRequest == null) {
-            return Result.error(ResCode.ERROR);
+    public Result userLogout (@RequestHeader("X-Token") String token) {
+        if (token == null) {
+            return Result.error();
         }
-        return userService.logout(httpServletRequest);
+        return userService.logout(token);
     }
 
     /**

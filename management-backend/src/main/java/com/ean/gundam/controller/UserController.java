@@ -77,4 +77,12 @@ public class UserController {
         return userService.getUserList(username,phone,pageNo,pageSize);
     }
 
+    @PostMapping("/add")
+    public Result addUser(@RequestBody User user) {
+        if (ObjectUtil.isNull(user)) {
+            return Result.error("添加信息为空");
+        }
+        return userService.addUser(user);
+    }
+
 }

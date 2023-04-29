@@ -159,6 +159,25 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         return Result.success(data);
     }
 
+    @Override
+    public Result addUser(User user) {
+        String username = user.getUsername();
+        String password = user.getPassword();
+        String email = user.getEmail();
+        if (StringUtils.isBlank(username) || StringUtils.isBlank(password)) {
+            return Result.error("必填信息为空");
+        }
+        if (StringUtils.isBlank(email)) {
+            return Result.error("必填信息为空");
+        }
+        // 表单信息正常
+        boolean save = this.save(user);
+        if (!save) {
+            return Result.error("添加失败");
+        }
+        return Result.success("添加成功");
+    }
+
     public User getSafetyUser(User user) {
         User safetyUser = new User();
         safetyUser.setUsername(user.getUsername());

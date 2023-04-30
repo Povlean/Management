@@ -191,7 +191,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
     @Override
     public Result updateUser(User user) {
         String username = user.getUsername();
-        String password = user.getPassword();
         if (StringUtils.isBlank(username)) {
             return Result.error();
         }
@@ -208,6 +207,15 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
             return Result.error();
         }
         return Result.success(ResCode.SUCCESS,"更新成功");
+    }
+
+    @Override
+    public Result deleteUserById(Integer id) {
+        boolean success = this.removeById(id);
+        if (!success) {
+            return Result.error("删除失败");
+        }
+        return Result.success("删除成功");
     }
 
     public User getSafetyUser(User user) {

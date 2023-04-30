@@ -53,7 +53,7 @@
         <el-table-column label="操作" width="180">
           <template slot-scope="scope">
             <el-button type="primary" icon="el-icon-edit" @click="openEditUI(scope.row.id)" circle></el-button>
-            <el-button type="danger" icon="el-icon-delete" circle></el-button>
+            <el-button type="danger" icon="el-icon-delete" @click="deleteUser(scope.row.id)" circle></el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -152,6 +152,26 @@ export default {
           console.log('error submit!!')
           return false
         }
+      })
+    },
+    deleteUser(id) {
+      this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        userApi.deleteUserById(id).then(res => {
+          this.$message({
+            type: 'success',
+            message: res.msg
+          })
+          this.getUserList()
+        })
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
+        })
       })
     },
     clearForm() {

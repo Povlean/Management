@@ -108,4 +108,12 @@ public class UserController {
         return userService.updateUser(user);
     }
 
+    @DeleteMapping("/{id}")
+    public Result deleteUserById(@PathVariable Integer id) {
+        if (id == null || id <= 0) {
+            return Result.error("删除id有误");
+        }
+        return userService.deleteUserById(id);
+    }
+
 }

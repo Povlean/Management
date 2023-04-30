@@ -7,17 +7,15 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="management" />
+        <module name="management-backend" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="management" target="1.8" />
       <module name="management-backend" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="management" options="-parameters" />
       <module name="management-backend" options="-parameters" />
     </option>
   </component>

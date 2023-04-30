@@ -29,4 +29,9 @@ public interface UserService extends IService<User> {
     Result<Map<String, Object>> getUserList(String username, String phone, Long pageNo, Long pageSize);
 
     Result addUser(User user);
+
+    Result getUserById(Integer id);
+
+    Result updateUser(User user);
+
 }

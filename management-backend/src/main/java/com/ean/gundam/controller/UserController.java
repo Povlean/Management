@@ -85,4 +85,27 @@ public class UserController {
         return userService.addUser(user);
     }
 
+    /**
+    * @description:数据回显
+    * @author:Povlean
+    * @date:2023/4/30 9:48
+    * @param:* @param id
+    * @return:* @return Result
+    */
+    @GetMapping("/get/{id}")
+    public Result getUserById(@PathVariable Integer id) {
+        if (id == null || id <= 0) {
+            return Result.error(ResCode.ERROR);
+        }
+        return userService.getUserById(id);
+    }
+
+    @PutMapping("/update")
+    public Result updateUser(@RequestBody User user) {
+        if (ObjectUtil.isNull(user)) {
+            return Result.error("更新信息为空");
+        }
+        return userService.updateUser(user);
+    }
+
 }

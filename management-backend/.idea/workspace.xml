@@ -5,15 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="474491ec-27b6-4fac-baf5-9bc280978433" name="变更" comment="登录注册接口">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/31c15e34-9e89-4c24-b0c6-ae48f0f0c965.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/31c15e34-9e89-4c24-b0c6-ae48f0f0c965.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ean/gundam/utils/AlgoUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/management.iml" beforeDir="false" afterPath="$PROJECT_DIR$/management-backend.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ean/gundam/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ean/gundam/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ean/gundam/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ean/gundam/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ean/gundam/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ean/gundam/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/ean/gundam/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ean/gundam/controller/UserController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/ean/gundam/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ean/gundam/service/UserService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/ean/gundam/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ean/gundam/service/impl/UserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../management-frontend/src/api/userManage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../management-frontend/src/api/userManage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../management-frontend/src/utils/request.js" beforeDir="false" afterPath="$PROJECT_DIR$/../management-frontend/src/utils/request.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../management-frontend/src/views/sys/user.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../management-frontend/src/views/sys/user.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -81,6 +83,9 @@
     ]
   }
 }</component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.ean.gundam.service.impl" />
@@ -98,8 +103,21 @@
     </option>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="management-backend" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="management-backend" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ManagementApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="management" />
+      <module name="management-backend" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.ean.gundam.ManagementApplication" />
       <extension name="coverage">
         <pattern>
@@ -139,7 +157,8 @@
       <workItem from="1682169043813" duration="2026000" />
       <workItem from="1682584159807" duration="7257000" />
       <workItem from="1682647365571" duration="13340000" />
-      <workItem from="1682729534610" duration="5775000" />
+      <workItem from="1682729534610" duration="7061000" />
+      <workItem from="1682818033978" duration="7117000" />
     </task>
     <task id="LOCAL-00001" summary="登录注册接口">
       <created>1682171071868</created>

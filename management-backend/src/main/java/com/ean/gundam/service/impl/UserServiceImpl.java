@@ -175,11 +175,44 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         if (!save) {
             return Result.error("添加失败");
         }
-        return Result.success("添加成功");
+        return Result.success(ResCode.SUCCESS,"添加成功");
+    }
+
+    @Override
+    public Result getUserById(Integer id) {
+        User user = this.getById(id);
+        if (user == null) {
+            return Result.error(ResCode.ERROR,"传入的用户不存在");
+        }
+        User safetyUser = this.getSafetyUser(user);
+        return Result.success(safetyUser,"回显成功");
+    }
+
+    @Override
+    public Result updateUser(User user) {
+        String username = user.getUsername();
+        String password = user.getPassword();
+        if (StringUtils.isBlank(username)) {
+            return Result.error();
+        }
+        String email = user.getEmail();
+        if (StringUtils.isBlank(email)) {
+            return Result.error();
+        }
+        if (username.length() < 1 || username.length() > 16) {
+            return Result.error();
+        }
+        // 更新操作
+        boolean success = this.updateById(user);
+        if (!success) {
+            return Result.error();
+        }
+        return Result.success(ResCode.SUCCESS,"更新成功");
     }
 
     public User getSafetyUser(User user) {
         User safetyUser = new User();
+        safetyUser.setId(user.getId());
         safetyUser.setUsername(user.getUsername());
         safetyUser.setEmail(user.getEmail());
         safetyUser.setPhone(user.getPhone());

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ean.management.mapper.MenuMapper">
+
+    <resultMap id="BaseResultMap" type="com.ean.management.model.domain.Menu">
+            <id property="menuId" column="menu_id" jdbcType="INTEGER"/>
+            <result property="component" column="component" jdbcType="VARCHAR"/>
+            <result property="path" column="path" jdbcType="VARCHAR"/>
+            <result property="redirect" column="redirect" jdbcType="VARCHAR"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="title" column="title" jdbcType="VARCHAR"/>
+            <result property="icon" column="icon" jdbcType="VARCHAR"/>
+            <result property="parentId" column="parent_id" jdbcType="INTEGER"/>
+            <result property="isLeaf" column="is_leaf" jdbcType="VARCHAR"/>
+            <result property="hidden" column="hidden" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        menu_id,component,path,
+        redirect,name,title,
+        icon,parent_id,is_leaf,
+        hidden
+    </sql>
+</mapper>

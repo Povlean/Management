@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.xiaoleilu:hutool:2.16.2">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/xiaoleilu/hutool/2.16.2/hutool-2.16.2.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/xiaoleilu/hutool/2.16.2/hutool-2.16.2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/xiaoleilu/hutool/2.16.2/hutool-2.16.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,9 +1,11 @@
 package com.ean.management.model.domain;
 
 import com.baomidou.mybatisplus.annotation.*;
+import io.swagger.models.auth.In;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * 
@@ -53,6 +55,9 @@ public class User implements Serializable {
      */
     @TableLogic
     private Integer deleted;
+
+    @TableField(exist = false)
+    private List<Integer> roleIdList;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

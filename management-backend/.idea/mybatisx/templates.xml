@@ -69,8 +69,8 @@
             <option name="tableUIInfoList">
               <list>
                 <TableUIInfo>
-                  <option name="className" value="RoleMenu" />
-                  <option name="tableName" value="tb_role_menu" />
+                  <option name="className" value="UserRole" />
+                  <option name="tableName" value="tb_user_role" />
                 </TableUIInfo>
               </list>
             </option>

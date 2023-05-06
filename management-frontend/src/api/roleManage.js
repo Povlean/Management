@@ -43,5 +43,11 @@ export default {
       url: `/role/${id}`,
       method: 'delete'
     })
+  },
+  getAllRoleList() {
+    return request({
+      url: `/role/all`,
+      method: 'get'
+    })
   }
 }

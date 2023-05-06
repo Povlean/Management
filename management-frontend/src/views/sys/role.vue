@@ -164,15 +164,17 @@ export default {
     clearForm() {
       this.roleForm = {}
       this.$refs.roleFormRef.clearValidate()
+      this.$refs.menuRef.setCheckedKeys([])
     },
     openEditUI(roleId) {
       if (roleId == null) {
         this.title = '新增角色'
       } else {
         this.title = '修改角色'
+        // 根据id查询角色数据
         roleApi.getRoleById(roleId).then((res) => {
           this.roleForm = res.data
-          console.log(this.roleForm.rolename)
+          this.$refs.menuRef.setCheckedKeys(res.data.menuIdList)
         })
       }
       this.dialogFormVisible = true

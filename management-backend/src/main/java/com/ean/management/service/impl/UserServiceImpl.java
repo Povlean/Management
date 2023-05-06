@@ -7,7 +7,9 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ean.management.commons.Result;
 import com.ean.management.constants.ResCode;
 import com.ean.management.mapper.UserMapper;
+import com.ean.management.mapper.UserRoleMapper;
 import com.ean.management.model.domain.User;
+import com.ean.management.model.domain.UserRole;
 import com.ean.management.model.request.LoginRequest;
 import com.ean.management.model.request.RegisterRequest;
 import com.ean.management.service.UserService;
@@ -15,6 +17,7 @@ import com.ean.management.utils.JwtUtil;
 import com.xiaoleilu.hutool.util.ObjectUtil;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 
 import javax.annotation.Resource;
@@ -43,6 +46,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
 
     @Resource
     private RedisTemplate redisTemplate;
+
+    @Resource
+    private UserRoleMapper userRoleMapper;
+
     @Override
     public Result<Map<String,Object>> userLogin(LoginRequest loginRequest, HttpServletRequest httpServletRequest) {
         String username = loginRequest.getUsername();
@@ -169,6 +176,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
     }
 
     @Override
+    @Transactional
     public Result addUser(User user) {
         String username = user.getUsername();
         String password = user.getPassword();
@@ -185,6 +193,14 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         boolean save = this.save(user);
         if (!save) {
             return Result.error("添加失败");
+        }
+        // 操作user_role表，表示一个用户拥有多个身份
+        List<Integer> roleIdList = user.getRoleIdList();
+        if (null != roleIdList) {
+            for (Integer roleId : roleIdList) {
+                UserRole userRole = new UserRole(null,user.getId(),roleId);
+                userRoleMapper.insert(userRole);
+            }
         }
         return Result.success(ResCode.SUCCESS,"添加成功");
     }

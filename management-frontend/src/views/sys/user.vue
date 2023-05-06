@@ -85,6 +85,13 @@
         <el-form-item label="电子邮箱" :label-width="formLabelWidth" prop="email">
           <el-input v-model="userForm.email" autocomplete="off"></el-input>
         </el-form-item>
+        <el-form-item label="用户角色" :label-width="formLabelWidth" prop="email">
+          <el-checkbox-group
+            v-model="userForm.roleIdList"
+            :max="2">
+            <el-checkbox v-for="role in roleList" :label="role.roleId" :key="role.roleId">{{ role.roleDesc }}</el-checkbox>
+          </el-checkbox-group>
+        </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">取 消</el-button>
@@ -96,6 +103,7 @@
 
 <script>
 import userApi from '@/api/userManage'
+import roleApi from '@/api/roleManage'
 export default {
   data() {
     var checkEmail = (rule, value, callback) => {
@@ -106,8 +114,11 @@ export default {
       return callback()
     }
     return {
+      roleList: [],
       formLabelWidth: '120px',
-      userForm: {},
+      userForm: {
+        roleIdList: []
+      },
       dialogFormVisible: false,
       title: '',
       total: 0,
@@ -133,6 +144,12 @@ export default {
     }
   },
   methods: {
+    getAllRoleList() {
+      roleApi.getAllRoleList().then(res => {
+        this.roleList = res.data
+        console.log(this.roleList)
+      })
+    },
     saveUser() {
       this.$refs.userFormRef.validate((valid) => {
         if (valid) {
@@ -175,7 +192,9 @@ export default {
       })
     },
     clearForm() {
-      this.userForm = {}
+      this.userForm = {
+        roleIdList: []
+      }
       this.$refs.userFormRef.clearValidate()
     },
     openEditUI(id) {
@@ -207,6 +226,7 @@ export default {
   },
   created() {
     this.getUserList()
+    this.getAllRoleList()
   }
 }
 </script>

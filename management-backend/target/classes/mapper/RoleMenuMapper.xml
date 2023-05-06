@@ -13,4 +13,10 @@
     <sql id="Base_Column_List">
         id,role_id,menu_id
     </sql>
+    <select id="getMenuIdListByRoleId" resultType="java.lang.Integer" parameterType="integer">
+        select a.`menu_id` from tb_role_menu a, tb_menu b
+            where a.`menu_id` = b.`menu_id`
+                and b.`is_leaf` = 'Y'
+                and a.`role_id` = #{roleId}
+    </select>
 </mapper>

@@ -10,13 +10,13 @@ import com.ean.management.mapper.RoleMapper;
 import com.ean.management.mapper.RoleMenuMapper;
 import com.ean.management.model.domain.Role;
 import com.ean.management.model.domain.RoleMenu;
-import com.ean.management.service.RoleMenuService;
 import com.ean.management.service.RoleService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -47,15 +47,19 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role>
     }
 
     @Override
+    @Transactional
     public Result<Role> getRoleById(Integer id) {
         Role role = this.getById(id);
         if (role == null) {
             return Result.error(ResCode.ERROR,"角色不存在");
         }
+        List<Integer> menuIdList = roleMenuMapper.getMenuIdListByRoleId(id);
+        role.setMenuIdList(menuIdList);
         return Result.success(role,"回显成功");
     }
 
     @Override
+    @Transactional
     public Result updateRole(Role role) {
         String roleName = role.getRoleName();
         if (StringUtils.isBlank(roleName)) {
@@ -66,9 +70,24 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role>
             return Result.error();
         }
         // 更新操作
+        // 操作的是role实体
         boolean success = this.updateById(role);
         if (!success) {
             return Result.error();
+        }
+        // 更新role应该清除role_menu的关系映射
+        // 删除原有的权限
+        LambdaQueryWrapper<RoleMenu> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(RoleMenu::getRoleId,role.getRoleId());
+        int count = roleMenuMapper.delete(wrapper);
+        if (count < 0) {
+            Result.error("权限删除出现错误");
+        }
+        // 新增修改的权限
+        if (null != role.getMenuIdList()) {
+            for (Integer menuId : role.getMenuIdList()) {
+                roleMenuMapper.insert(new RoleMenu(null,role.getRoleId(),menuId));
+            }
         }
         return Result.success(ResCode.SUCCESS,"更新成功");
     }
@@ -87,7 +106,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role>
             return Result.error("添加失败");
         }
         // 将role写入role_menu关系表中
-        if (role.getMenuIdList() != null) {
+        if (null != role.getMenuIdList()) {
             for (Integer menuId : role.getMenuIdList()) {
                 roleMenuMapper.insert(new RoleMenu(null,role.getRoleId(),menuId));
             }
@@ -96,12 +115,27 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role>
     }
 
     @Override
+    @Transactional
     public Result<Role> deleteRoleById(Integer id) {
+        // 删除role实体
         boolean success = this.removeById(id);
         if (!success) {
             return Result.error("删除失败");
         }
+        // 删除role_menu关系映射
+        LambdaQueryWrapper<RoleMenu> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(RoleMenu::getRoleId,id);
+        int count = roleMenuMapper.delete(wrapper);
+        if (count < 0) {
+            return Result.error("映射关系删除出错");
+        }
         return Result.success("删除成功");
+    }
+
+    @Override
+    public Result getAllRole() {
+        List<Role> roleList = this.list();
+        return Result.success(roleList);
     }
 }
 

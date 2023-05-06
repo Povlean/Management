@@ -2,7 +2,10 @@ package com.ean.management.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.ean.management.model.domain.RoleMenu;
+import io.swagger.models.auth.In;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 
 /**
@@ -13,7 +16,7 @@ import org.apache.ibatis.annotations.Mapper;
 */
 @Mapper
 public interface RoleMenuMapper extends BaseMapper<RoleMenu> {
-
+    List<Integer> getMenuIdListByRoleId(Integer roleId);
 }
 
 

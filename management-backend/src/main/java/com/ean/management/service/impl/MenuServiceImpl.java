@@ -33,6 +33,27 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu>
         return Result.success(menuList,"回显成功");
     }
 
+    @Override
+    public List<Menu> getMenuListByUserId(Integer userId) {
+        // 获取一级菜单
+        List<Menu> menuList = menuMapper.getMenuListByUserId(userId, 0);
+        // 子菜单
+        setMenuChildrenByUserId(userId,menuList);
+        return menuList;
+    }
+
+    private void setMenuChildrenByUserId(Integer userId, List<Menu> menuList) {
+        if (null != menuList) {
+            for (Menu menu : menuList) {
+                // 获取二级
+                List<Menu> subMenuList = menuMapper.getMenuListByUserId(userId, menu.getMenuId());
+                menu.setChildren(subMenuList);
+                // 递归
+                setMenuChildrenByUserId(userId,subMenuList);
+            }
+        }
+    }
+
     public void setMenuChildren(List<Menu> menuList) {
         if (menuList != null || menuList.size() > 0) {
             for (Menu menu : menuList) {

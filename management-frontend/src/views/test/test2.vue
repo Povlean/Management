@@ -1,6 +1,6 @@
 <template>
   <div>
-    测试模块
+    测试模块2
   </div>
 </template>
 

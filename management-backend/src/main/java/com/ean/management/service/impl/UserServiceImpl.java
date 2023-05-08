@@ -8,10 +8,12 @@ import com.ean.management.commons.Result;
 import com.ean.management.constants.ResCode;
 import com.ean.management.mapper.UserMapper;
 import com.ean.management.mapper.UserRoleMapper;
+import com.ean.management.model.domain.Menu;
 import com.ean.management.model.domain.User;
 import com.ean.management.model.domain.UserRole;
 import com.ean.management.model.request.LoginRequest;
 import com.ean.management.model.request.RegisterRequest;
+import com.ean.management.service.MenuService;
 import com.ean.management.service.UserService;
 import com.ean.management.utils.JwtUtil;
 import com.xiaoleilu.hutool.util.ObjectUtil;
@@ -46,6 +48,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
 
     @Resource
     private RedisTemplate redisTemplate;
+
+    @Resource
+    private MenuService menuService;
 
     @Resource
     private UserRoleMapper userRoleMapper;
@@ -150,6 +155,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         // roles是从数据库中查表查出来的
         List<String> roles = this.getBaseMapper().getRolesByUserId(loginUser.getId());
         data.put("roles",roles);
+        // 权限列表
+        List<Menu> menuList = menuService.getMenuListByUserId(loginUser.getId());
+        data.put("menuList",menuList);
+        // 当前用户的角色身份能够操控的页面权限
         return Result.success(data);
     }
 
@@ -206,16 +215,25 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
     }
 
     @Override
+    @Transactional
     public Result<User> getUserById(Integer id) {
         User user = this.getById(id);
         if (user == null) {
             return Result.error(ResCode.ERROR,"传入的用户不存在");
         }
         User safetyUser = this.getSafetyUser(user);
+        // 需要在user_role表中查询user拥有的role身份
+        LambdaQueryWrapper<UserRole> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(UserRole::getUserId, safetyUser.getId());
+        List<UserRole> userRoles = userRoleMapper.selectList(wrapper);
+        List<Integer> roleIdList = userRoles.stream().map(userRole -> userRole.getRoleId()).collect(Collectors.toList());
+        // 设置roleIdList
+        safetyUser.setRoleIdList(roleIdList);
         return Result.success(safetyUser,"回显成功");
     }
 
     @Override
+    @Transactional
     public Result updateUser(User user) {
         String username = user.getUsername();
         if (StringUtils.isBlank(username)) {
@@ -233,13 +251,36 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         if (!success) {
             return Result.error();
         }
+        // 删除后添加（更新操作）
+        LambdaQueryWrapper<UserRole> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(UserRole::getUserId,user.getId());
+        int delete = userRoleMapper.delete(wrapper);
+        if (delete < 0) {
+            return Result.error();
+        }
+        // 删除完成，对UserRole表进行添加
+        if (null != user.getRoleIdList()) {
+            List<Integer> roleIdList = user.getRoleIdList();
+            for (Integer roleId : roleIdList) {
+                UserRole userRole = new UserRole(null,user.getId(),roleId);
+                userRoleMapper.insert(userRole);
+            }
+        }
         return Result.success(ResCode.SUCCESS,"更新成功");
     }
 
     @Override
+    @Transactional
     public Result<User> deleteUserById(Integer id) {
         boolean success = this.removeById(id);
         if (!success) {
+            return Result.error("删除失败");
+        }
+        // 删除user_role表中的关系映射
+        LambdaQueryWrapper<UserRole> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(UserRole::getUserId,id);
+        int delete = userRoleMapper.delete(wrapper);
+        if (delete < 0) {
             return Result.error("删除失败");
         }
         return Result.success("删除成功");

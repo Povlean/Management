@@ -5,29 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="474491ec-27b6-4fac-baf5-9bc280978433" name="变更" comment="登录注册接口">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ean/management/mapper/UserRoleMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ean/management/model/domain/UserRole.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ean/management/service/UserRoleService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ean/management/service/impl/UserRoleServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserRoleMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/mybatisx/templates.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/mybatisx/templates.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ean/management/controller/RoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ean/management/controller/RoleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ean/management/mapper/RoleMenuMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ean/management/mapper/RoleMenuMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ean/management/model/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ean/management/model/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ean/management/service/RoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ean/management/service/RoleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ean/management/service/impl/RoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ean/management/service/impl/RoleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ean/management/commons/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ean/management/commons/Result.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ean/management/mapper/MenuMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ean/management/mapper/MenuMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ean/management/service/MenuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ean/management/service/MenuService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ean/management/service/impl/MenuServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ean/management/service/impl/MenuServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ean/management/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ean/management/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/RoleMenuMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/RoleMenuMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ean/management/controller/RoleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ean/management/controller/RoleController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ean/management/mapper/RoleMenuMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ean/management/mapper/RoleMenuMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ean/management/service/RoleService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ean/management/service/RoleService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ean/management/service/impl/RoleServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ean/management/service/impl/RoleServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/MenuMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/MenuMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ean/management/commons/Result.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ean/management/commons/Result.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ean/management/mapper/MenuMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ean/management/mapper/MenuMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ean/management/service/MenuService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ean/management/service/MenuService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ean/management/service/impl/MenuServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ean/management/service/impl/MenuServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/ean/management/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ean/management/service/impl/UserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/RoleMenuMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/RoleMenuMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../management-frontend/src/api/roleManage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../management-frontend/src/api/roleManage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../management-frontend/src/views/sys/role.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../management-frontend/src/views/sys/role.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../management-frontend/src/views/sys/user.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../management-frontend/src/views/sys/user.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/MenuMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/MenuMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../management-frontend/src/layout/components/Sidebar/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../management-frontend/src/layout/components/Sidebar/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../management-frontend/src/permission.js" beforeDir="false" afterPath="$PROJECT_DIR$/../management-frontend/src/permission.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../management-frontend/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../management-frontend/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../management-frontend/src/store/getters.js" beforeDir="false" afterPath="$PROJECT_DIR$/../management-frontend/src/store/getters.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../management-frontend/src/store/modules/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/../management-frontend/src/store/modules/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../management-frontend/src/views/test/test1.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../management-frontend/src/views/test/test1.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../management-frontend/src/views/test/test2.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../management-frontend/src/views/test/test2.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../management-frontend/src/views/test/test3.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../management-frontend/src/views/test/test3.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,7 +205,9 @@
       <workItem from="1683165618364" duration="8100000" />
       <workItem from="1683207034274" duration="191000" />
       <workItem from="1683250606979" duration="4110000" />
-      <workItem from="1683354608841" duration="4881000" />
+      <workItem from="1683354608841" duration="5705000" />
+      <workItem from="1683424089717" duration="12664000" />
+      <workItem from="1683511276456" duration="2697000" />
     </task>
     <task id="LOCAL-00001" summary="登录注册接口">
       <created>1682171071868</created>

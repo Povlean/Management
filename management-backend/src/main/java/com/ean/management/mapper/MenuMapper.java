@@ -3,6 +3,9 @@ package com.ean.management.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.ean.management.model.domain.Menu;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 
 /**
@@ -13,7 +16,7 @@ import org.apache.ibatis.annotations.Mapper;
 */
 @Mapper
 public interface MenuMapper extends BaseMapper<Menu> {
-
+    List<Menu> getMenuListByUserId(@Param("userId") Integer userId,@Param("pid") Integer pid);
 }
 
 

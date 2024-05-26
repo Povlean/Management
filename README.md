@@ -1,7 +1,7 @@
 # Management
 ### 后台管理系统
 
-技术栈选型：Vue + vue-admin-template + Axios + SpringBoot + Mybatis + Mybatis-Plus
+技术栈选型：Vue + vue-admin-template + Axios + SpringBoot + Mybatis + Mybatis-Plus 
 
 该项目用于再次熟悉Vue+SpringBoot前后端分离的开发业务，Vue的选型使用了比较容易入手的vue-admin-template，后端服务器依然是SpringBoot搭建。
 
